@@ -1,5 +1,7 @@
 # Duct database.redis.carmine
 
+[![Build Status](https://travis-ci.org/duct-framework/database.redis.carmine.svg?branch=master)](https://travis-ci.org/duct-framework/database.redis.carmine)
+
 [Integrant][] methods for connecting to a [Redis][] database via
 [Carmine][].
 
