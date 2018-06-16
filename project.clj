@@ -1,4 +1,4 @@
-(defproject duct/database.redis.carmine "0.1.0"
+(defproject duct/database.redis.carmine "0.1.1"
   :description "Integrant methods for connecting to Redis via Carmine"
   :url "https://github.com/duct-framework/database.redis.carmine"
   :license {:name "Eclipse Public License"
