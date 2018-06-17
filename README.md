@@ -32,6 +32,29 @@ easily mock or stub out the database using a tool like [Shrubbery][].
 
 [shrubbery]: https://github.com/bguthrie/shrubbery
 
+## Example
+
+Consider a redis database where users are stored as hashmap with keys
+like `user:{username}`.
+
+The connection spec needed by Carmine can be extracted from this module
+`Boundary` by using the `:conn-opts` key.
+
+```clojure
+(ns my-project.boundary.user-db
+  (:require [duct.database.redis.carmine]
+            [taoensso.carmine :as car :refer (wcar)]))
+            
+(defprotocol UserDatabase
+  (get-user [db username]))
+  
+(extend-protocol UserDatabase
+  duct.database.redis.carmine.Boundary
+  (get-user [db username]
+    (car/wcar (:conn-opts db) 
+      (car/hgetall (str "user:" username))))) 
+```
+
 ## License
 
 Copyright © 2018 James Reeves
